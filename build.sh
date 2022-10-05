@@ -28,7 +28,7 @@
 # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 # SUCH DAMAGE.
 
-tag="build.sh-v1.1"
+tag="build.sh-v1.2"
 
 pushd $(dirname $0) &>/dev/null
 
@@ -127,28 +127,25 @@ fi
 
 if [[ "$#" -gt 0 && "$1" == "--full" ]] || ! $D image exists $tag; then
     . /dev/stdin <<<"$(cat <<EOF | base64 -d | gunzip
-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
+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
 EOF
 )"
 fi
 
 localmnt="$PWD"
-if [ "$(uname)" == "Darwin" ]; then
-    localmnt="/mnt$localmnt"
-fi
 localmnt="$localmnt:/mnt"
 if [ "$(uname)" != "Darwin" ]; then
     localmnt="$localmnt:Z"
